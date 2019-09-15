@@ -1,1 +1,68 @@
-<p>resume works!</p>
+<div *ngIf="resume">
+  <section *ngIf="resume.workExperience">
+    <h2>Work Experience</h2>
+    <div *ngFor="let work of resume.workExperience">
+      <h5>
+        {{ work.company }}, <span class="small">{{ work.location }}</span>
+      </h5>
+      <p>{{ work.title }}</p>
+      <p>
+        {{ work.startDate }} -
+        {{ work.isCurrentJob ? "Present" : work.endDate }}
+      </p>
+      <div *ngIf="work.description && work.description.length > 0">
+        <p>Description/Responsibilities:</p>
+        <ul>
+          <li *ngFor="let descItem of work.description">
+            {{ descItem }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="resume.education">
+    <h2>Education</h2>
+    <div *ngFor="let education of resume.education">
+      <h5>
+        {{ education.name }},
+        <span class="small">{{ education.location }}</span>
+      </h5>
+      <p>{{ education.degree }}</p>
+      <p>{{ education.startDate }} - {{ education.endDate }}</p>
+      <div *ngIf="education.description && education.description.length > 0">
+        <p>Description:</p>
+        <ul>
+          <li *ngFor="let descItem of education.description">
+            {{ descItem }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="resume.skills">
+    <h2>Skills</h2>
+    <div>
+      <h5>Primary Skills</h5>
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm" *ngFor="let skillGroup of primarySkills">
+            <li *ngFor="let skill of skillGroup">{{ skill }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h5>Working Knowledge</h5>
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm" *ngFor="let skillGroup of secondarySkills">
+            <li *ngFor="let skill of skillGroup">{{ skill }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

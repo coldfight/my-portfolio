@@ -8,7 +8,11 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { ResumeComponent } from "./components/pages/resume/resume.component";
 import { ProjectsComponent } from "./components/pages/projects/projects.component";
+import { FirebaseService } from "./services/firebase.service";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+
 import { environment } from "../environments/environment";
+import { WorkExperienceComponent } from './components/pages/resume/work-experience/work-experience.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +20,16 @@ import { environment } from "../environments/environment";
     HeaderComponent,
     FooterComponent,
     ResumeComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    WorkExperienceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
