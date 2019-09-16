@@ -17,6 +17,7 @@ import { EducationComponent } from './components/resume/education/education.comp
 import { SkillsComponent } from './components/resume/skills/skills.component';
 import { AboutComponent } from './components/resume/about/about.component';
 import { ProfileComponent } from './components/resume/profile/profile.component';
+import { ContactMeComponent } from './components/contact-me/contact-me.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileComponent } from './components/resume/profile/profile.component'
     EducationComponent,
     SkillsComponent,
     AboutComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContactMeComponent
   ],
   imports: [
     BrowserModule,
