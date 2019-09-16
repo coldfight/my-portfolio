@@ -2,7 +2,86 @@
   <div class="row">
     <div class="col-8 offset-2">
       <div class="p-3 shadow-sm bg-white rounded">
-        Contact form.
+        <form [formGroup]="contactForm" (ngSubmit)="submitForm()" novalidate>
+          <div class="form-group">
+            <label for="fullName">Your Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              name="fullName"
+              placeholder="Full Name"
+              formControlName="fullName"
+              #fullName
+            />
+            <p
+              *ngIf="
+                contactForm.controls['fullName'].invalid &&
+                (contactForm.controls['fullName'].dirty ||
+                  contactForm.controls['fullName'].touched)
+              "
+              class="alert alert-danger mt-3"
+            >
+              Your full name is required.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email Address</label>
+
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+              formControlName="email"
+              #email
+            />
+            <p
+              *ngIf="
+                contactForm.controls['email'].invalid &&
+                (contactForm.controls['email'].dirty ||
+                  contactForm.controls['email'].touched)
+              "
+              class="alert alert-danger mt-3"
+            >
+              Should be a valid email address.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <textarea
+              name="message"
+              id="message"
+              rows="10"
+              class="form-control"
+              formControlName="message"
+              #message
+              placeholder="Write your message"
+            ></textarea>
+            <p
+              *ngIf="
+                contactForm.controls['message'].invalid &&
+                (contactForm.controls['message'].dirty ||
+                  contactForm.controls['message'].touched)
+              "
+              class="alert alert-danger mt-3"
+            >
+              Write a small message.
+            </p>
+          </div>
+
+          <div class="form-group mt-3">
+            <button
+              [disabled]="contactForm.invalid"
+              class="btn btn-primary"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
