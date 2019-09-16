@@ -1,1 +1,19 @@
-<p>education works!</p>
+<section *ngIf="education">
+  <h2>Education</h2>
+  <div *ngFor="let education of education">
+    <h5>
+      {{ education.name }},
+      <span class="small">{{ education.location }}</span>
+    </h5>
+    <p>{{ education.degree }}</p>
+    <p>{{ education.startDate }} - {{ education.endDate }}</p>
+    <div *ngIf="education.description && education.description.length > 0">
+      <p>Description:</p>
+      <ul>
+        <li *ngFor="let descItem of education.description">
+          {{ descItem }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

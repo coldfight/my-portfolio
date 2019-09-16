@@ -1,1 +1,24 @@
-<p>skills works!</p>
+<section>
+  <h2>Skills</h2>
+  <div>
+    <h5>Primary Skills</h5>
+    <div class="container">
+      <div class="row">
+        <ul class="col-sm" *ngFor="let skillGroup of primarySkills">
+          <li *ngFor="let skill of skillGroup">{{ skill }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h5>Working Knowledge</h5>
+    <div class="container">
+      <div class="row">
+        <ul class="col-sm" *ngFor="let skillGroup of secondarySkills">
+          <li *ngFor="let skill of skillGroup">{{ skill }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
