@@ -50,8 +50,13 @@ export interface Skills {
   secondarySkills: Array<string>;
 }
 
+export interface AboutMe {
+  description: string;
+}
+
 export interface Resume {
   workExperience: Array<WorkExperience>;
   education: Array<Education>;
   skills: Skills;
+  aboutMe: AboutMe;
 }

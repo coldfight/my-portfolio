@@ -7,11 +7,11 @@
     </div>
     <div class="col-md-9">
       <div class="content-area p-4 shadow-sm bg-white rounded">
-        <app-about></app-about>
-
-        <hr class="elegant" />
-
         <div *ngIf="resume">
+          <app-about [aboutMe]="resume.aboutMe"></app-about>
+
+          <hr class="elegant" />
+
           <app-work-experience
             *ngIf="resume.workExperience"
             [workExperience]="resume.workExperience"

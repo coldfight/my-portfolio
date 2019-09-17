@@ -8,10 +8,10 @@ const routes: Routes = [
   {
     path: "",
     children: [
-      { path: "", component: ResumeComponent },
+      { path: "", component: ResumeComponent, pathMatch: "full" },
       { path: "projects", component: ProjectsComponent },
       { path: "contact", component: ContactMeComponent }
-    ]
+    ],
   }
 ];
 
