@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MarkdownModule } from "ngx-markdown";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -42,6 +43,7 @@ import { PointerDirective } from "./directives/pointer.directive";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     MarkdownModule.forRoot(),
+    FontAwesomeModule,
     AppRoutingModule
   ],
   providers: [FirebaseService],

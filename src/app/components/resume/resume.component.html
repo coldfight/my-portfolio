@@ -17,10 +17,14 @@
             [workExperience]="resume.workExperience"
           ></app-work-experience>
 
+          <hr class="elegant" />
+
           <app-education
             *ngIf="resume.education"
             [education]="resume.education"
           ></app-education>
+
+          <hr class="elegant" />
 
           <app-skills
             *ngIf="resume.skills"
