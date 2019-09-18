@@ -38,6 +38,10 @@ export class ContactMeComponent implements OnInit {
       if (response) {
         this.contactForm.reset();
         this.toastr.success("Your message has been submitted");
+      } else {
+        this.toastr.error(
+          "There was an issue submitting your message. Try again later."
+        );
       }
     }
   }
