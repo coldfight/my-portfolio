@@ -4,6 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MarkdownModule } from "ngx-markdown";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from "./modules/app-routing.module";
 import { AppComponent } from "./app.component";
@@ -43,6 +45,8 @@ import { FaIconsModule } from "./modules/fa-icons.module";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     MarkdownModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     FaIconsModule
   ],
