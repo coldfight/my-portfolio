@@ -12,6 +12,33 @@
 
           <hr class="elegant" />
 
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a
+                routerLink="work-experience"
+                routerLinkActive="active"
+                class="nav-link"
+                >Work Experience</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="education"
+                routerLinkActive="active"
+                class="nav-link"
+                >Education</a
+              >
+            </li>
+            <li class="nav-item">
+              <a routerLink="skills" routerLinkActive="active" class="nav-link"
+                >Skills</a
+              >
+            </li>
+          </ul>
+          <div class="container">
+            <router-outlet></router-outlet>
+          </div>
+          <!-- 
           <app-work-experience
             *ngIf="resume.workExperience"
             [workExperience]="resume.workExperience"
@@ -29,7 +56,7 @@
           <app-skills
             *ngIf="resume.skills"
             [skills]="resume.skills"
-          ></app-skills>
+          ></app-skills> -->
         </div>
       </div>
     </div>

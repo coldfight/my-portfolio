@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { WorkExperience } from "../resume.component";
+import { WorkExperience, Resume } from "../resume.component";
+import { FirebaseService } from "src/app/services/firebase.service";
 
 @Component({
   selector: "app-work-experience",
@@ -7,9 +8,12 @@ import { WorkExperience } from "../resume.component";
   styleUrls: ["./work-experience.component.css"]
 })
 export class WorkExperienceComponent implements OnInit {
-  @Input() workExperience: WorkExperience;
+  private workExperience: Array<WorkExperience>;
 
-  constructor() {}
+  constructor(private firebaseService: FirebaseService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    const resume = await this.firebaseService.getResume();
+    this.workExperience = resume.workExperience;
+  }
 }

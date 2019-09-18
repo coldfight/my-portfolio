@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Skills } from "../resume.component";
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 const NUM_COLUMNS = 3;
 
@@ -9,12 +10,15 @@ const NUM_COLUMNS = 3;
   styleUrls: ["./skills.component.css"]
 })
 export class SkillsComponent implements OnInit {
-  @Input() skills: Skills;
+  private skills: Skills;
   private primarySkills: Array<Array<string>> = null;
   private secondarySkills: Array<Array<string>> = null;
-  constructor() {}
 
-  ngOnInit() {
+  constructor(private firebaseService: FirebaseService) {}
+
+  async ngOnInit() {
+    const resume = await this.firebaseService.getResume();
+    this.skills = resume.skills;
     this.setupPrimarySkills(this.skills.primarySkills);
     this.setupSecondarySkills(this.skills.secondarySkills);
   }
@@ -40,7 +44,7 @@ export class SkillsComponent implements OnInit {
     }
 
     for (let i = 0; i < originalSubSkills.length; i++) {
-      secondarySkills[i % NUM_COLUMNS].push(this.skills.secondarySkills[i]);
+      secondarySkills[i % NUM_COLUMNS].push(originalSubSkills[i]);
     }
     this.secondarySkills = secondarySkills;
   }

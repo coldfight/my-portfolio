@@ -8,20 +8,14 @@ import { Subscription } from "rxjs";
   styleUrls: ["./resume.component.css"]
 })
 export class ResumeComponent implements OnInit, OnDestroy {
-  private resumeSubscription: Subscription;
   private resume: Resume = null;
 
   constructor(private firebaseService: FirebaseService) {}
 
-  ngOnInit() {
-    this.resumeSubscription = this.firebaseService
-      .getResume()
-      .subscribe((data: Resume) => {
-        this.resume = data;
-      });
+  async ngOnInit() {
+    this.resume = await this.firebaseService.getResume();
   }
   ngOnDestroy() {
-    this.resumeSubscription.unsubscribe();
   }
 }
 

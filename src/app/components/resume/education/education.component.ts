@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Education } from "../resume.component";
+import { FirebaseService } from "src/app/services/firebase.service";
 
 @Component({
   selector: "app-education",
@@ -7,9 +8,12 @@ import { Education } from "../resume.component";
   styleUrls: ["./education.component.css"]
 })
 export class EducationComponent implements OnInit {
-  @Input() education: Education;
+  private education: Array<Education>;
 
-  constructor() {}
+  constructor(private firebaseService: FirebaseService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    const resume = await this.firebaseService.getResume();
+    this.education = resume.education;
+  }
 }
