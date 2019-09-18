@@ -4,9 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MarkdownModule } from "ngx-markdown";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from "./modules/app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
@@ -21,6 +20,7 @@ import { AboutComponent } from "./components/resume/about/about.component";
 import { ProfileComponent } from "./components/resume/profile/profile.component";
 import { ContactMeComponent } from "./components/contact-me/contact-me.component";
 import { PointerDirective } from "./directives/pointer.directive";
+import { FaIconsModule } from "./modules/fa-icons.module";
 
 @NgModule({
   declarations: [
@@ -43,8 +43,8 @@ import { PointerDirective } from "./directives/pointer.directive";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     MarkdownModule.forRoot(),
-    FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FaIconsModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

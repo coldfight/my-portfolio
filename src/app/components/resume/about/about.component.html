@@ -2,7 +2,17 @@
   <h2>About Me</h2>
 
   <markdown ngPreserveWhitespaces [data]="descriptionToDisplay"></markdown>
-  <a (click)="toggleReadMore()" appPointer class="btn btn-link text-primary">{{
-    displayFullText ? "Read Less" : "Read More"
-  }}</a>
+  <a
+    (click)="toggleReadMore()"
+    appPointer
+    class="pl-0 btn btn-link text-primary"
+    >{{ displayFullText ? "Read Less" : "Read More" }}
+    <fa-icon
+      [icon]="['fas', displayFullText ? 'sort-up' : 'sort-down']"
+      [ngStyle]="{
+        verticalAlign: displayFullText ? 'bottom' : 'top',
+        lineHeight: 1
+      }"
+    ></fa-icon>
+  </a>
 </section>
