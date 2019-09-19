@@ -3,6 +3,7 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxCaptchaModule } from "ngx-captcha";
 import { MarkdownModule } from "ngx-markdown";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -42,6 +43,7 @@ import { FaIconsModule } from "./modules/fa-icons.module";
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    NgxCaptchaModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     MarkdownModule.forRoot(),

@@ -4,7 +4,12 @@
       <div class="p-3 shadow-sm bg-white rounded">
         <h2>Contact Form</h2>
 
-        <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="submitForm()" novalidate>
+        <form
+          class="mt-4"
+          [formGroup]="contactForm"
+          (ngSubmit)="submitForm()"
+          novalidate
+        >
           <div class="form-group">
             <input
               type="text"
@@ -28,7 +33,6 @@
           </div>
 
           <div class="form-group">
-
             <input
               type="email"
               class="form-control"
@@ -71,6 +75,21 @@
               Write a small message.
             </p>
           </div>
+
+          <ngx-recaptcha2
+            #captchaElem
+            [siteKey]="captchaKey"
+            (reset)="handleReset()"
+            (expire)="handleExpire()"
+            (load)="handleLoad()"
+            (success)="handleSuccess($event)"
+            [useGlobalDomain]="false"
+            [size]="captchaSize"
+            [hl]="captchaLanguage"
+            [theme]="captchTheme"
+            formControlName="recaptcha"
+          >
+          </ngx-recaptcha2>
 
           <div class="form-group mt-3">
             <button

@@ -1,8 +1,9 @@
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 import { FirebaseService } from "src/app/services/firebase.service";
+import { ReCaptcha2Component } from "ngx-captcha";
 
 @Component({
   selector: "app-contact-me",
@@ -10,6 +11,13 @@ import { FirebaseService } from "src/app/services/firebase.service";
   styleUrls: ["./contact-me.component.css"]
 })
 export class ContactMeComponent implements OnInit {
+  @ViewChild("captchaElem", { static: false }) captchaElem: ReCaptcha2Component;
+
+  captchaKey = "6LdLOLkUAAAAALtlrsVnYqr65qD-lSbHN4KY4_UW";
+  captchaSize = "regular";
+  captchaLanguage = "en";
+  captchaTheme = "light";
+
   // https://alligator.io/angular/firebase-crud-operations/
   contactForm: FormGroup;
   constructor(
@@ -26,7 +34,8 @@ export class ContactMeComponent implements OnInit {
     this.contactForm = this.formBuilder.group({
       fullName: ["", Validators.required],
       email: ["", Validators.email],
-      message: ["", Validators.required]
+      message: ["", Validators.required],
+      recaptcha: ["", Validators.required]
     });
   }
 
@@ -37,6 +46,7 @@ export class ContactMeComponent implements OnInit {
       );
       if (response) {
         this.contactForm.reset();
+        this.captchaElem.resetCaptcha();
         this.toastr.success("Your message has been submitted");
       } else {
         this.toastr.error(
@@ -45,6 +55,11 @@ export class ContactMeComponent implements OnInit {
       }
     }
   }
+
+  handleReset() {}
+  handleExpire() {}
+  handleLoad() {}
+  handleSuccess(event) {}
 }
 
 export interface ContactFormMessage {
