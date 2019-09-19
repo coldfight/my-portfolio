@@ -9,11 +9,19 @@ import { FirebaseService } from "src/app/services/firebase.service";
 })
 export class WorkExperienceComponent implements OnInit {
   private workExperience: Array<WorkExperience>;
+  private selectedWorkExperienceIndex: number;
 
   constructor(private firebaseService: FirebaseService) {}
 
   async ngOnInit() {
     const resume = await this.firebaseService.getResume();
-    this.workExperience = resume.workExperience;
+    this.workExperience = resume.workExperience.reverse();
+
+    if (this.workExperience.length > 0) {
+      this.selectedWorkExperienceIndex = 0;
+    }
+  }
+  updateSelectedWorkExperienceIndex(index: number) {
+    this.selectedWorkExperienceIndex = index;
   }
 }
